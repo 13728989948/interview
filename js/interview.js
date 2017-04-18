@@ -1,6 +1,5 @@
 // 绑定链接弹出信息的点击弹出事件(中部弹出)
 function bindClickLkPop(elId, html, width, height) {
-	var $ = layui.jquery;
 	var layer = layui.layer;
 
 	var elDom = $("#" + elId);
@@ -34,9 +33,8 @@ function bindClickLkPop(elId, html, width, height) {
 
 // 绑定链接弹出信息的点击弹出事件(Tip型)
 function bindClickLkTip(elId, html, width, height) {
-	var $ = layui.jquery;
 	var layer = layui.layer;
-	
+
 	var elDom = $("#" + elId);
 
 	var startOpen = function() {
@@ -58,8 +56,6 @@ function bindClickLkTip(elId, html, width, height) {
 
 // 绑定点击Doc关闭弹出框
 function bindClickDocClosePop(elId) {
-	var $ = layui.jquery;
-
 	$(document).unbind("keydown");
 	$(document).bind("keydown", "esc", function(event) {
 		// 按Esc可以关闭所有对话框
@@ -82,7 +78,6 @@ function bindClickDocClosePop(elId) {
 // 参加面试去
 function goToInterview() {
 	layui.use("layer", function() {
-		var $ = layui.jquery;
 		var elId = $(this).attr("id");
 		var html = "耶！参加面试了哦~~~";
 		var content = "<div id=\"" + elId + "PopCon\" class=\"lkPopCon goToInterview\">" + html + "</div>";

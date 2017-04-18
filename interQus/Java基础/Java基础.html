@@ -19,82 +19,51 @@
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
+
+<!-- 外层Div -->
  <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
-
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+<!-- 主内容区 -->
+  <div id="mainCon" class="layui-tab layui-tab-brief">
    <div class="layui-body layui-tab-content site-demo site-demo-body">
     <div class="layui-tab-item layui-show">
      <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java支持的基本数据类型有哪几种</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">byte,short,int,long,float,double,boolean,char</blockquote>
+      <fieldset class="layui-elem-field layui-field-title">
+       <legend>Java支持的基本数据类型有哪几种</legend>
+      </fieldset>
+      <blockquote class="layui-elem-quote">byte,short,int,long,float,double,boolean,char</blockquote>
 
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>String s="a"+"b"+"c"创建了几个对象，String a=new String("b"+"c");又创建了几个对象</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <div>
-         <strong>第一个问题：</strong>
-         <span>"a"+"b"+"c"在编译期已经常量折叠为"abc",答案：<em class="answer">一个对象</em></span>
-        </div>
-        <div style="height:10px;"></div>
-        <div><strong>第二个问题：</strong></div>
-        <div>字符串常量 "b" 被JVM存放在数据段区常量池中</div>
-        <div>字符串常量 "c" 被JVM存放在数据段区常量池中</div>
-        <div>"b"+"c"又生成了一个字符串被JVM存放在数据段区常量池中</div>
-        <div>new String("b"+"c")对象被JVM存放在堆中</div>
-        <div>答案：<em class="answer">四个对象</em></div>
-       </blockquote>
-
-      </div>
+      <fieldset class="layui-elem-field layui-field-title">
+       <legend>String s="a"+"b"+"c"创建了几个对象，String a=new String("b"+"c");又创建了几个对象</legend>
+      </fieldset>
+      <blockquote class="layui-elem-quote">
+       <div>
+        <strong>第一个问题：</strong>
+        <span>"a"+"b"+"c"在编译期已经常量折叠为"abc",答案：<em class="answer">一个对象</em></span>
+       </div>
+       <div style="height:10px;"></div>
+       <div><strong>第二个问题：</strong></div>
+       <div>字符串常量 "b" 被JVM存放在数据段区常量池中</div>
+       <div>字符串常量 "c" 被JVM存放在数据段区常量池中</div>
+       <div>"b"+"c"又生成了一个字符串被JVM存放在数据段区常量池中</div>
+       <div>new String("b"+"c")对象被JVM存放在堆中</div>
+       <div>答案：<em class="answer">四个对象</em></div>
+      </blockquote>
      </div>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 </body>
