@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Dubbo线程模型</title>
+<meta name="robots" content="all" />
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="expires" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+ <div class="layui-layout layui-layout-admin">
+  <div class="layui-header header header-demo">
+   <div class="layui-main">
+    <a class="logo" href="/"></a>
+    <ul class="layui-nav">
+     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-side layui-bg-black">
+   <div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree site-demo-nav">
+     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
+     <li class="layui-nav-item layui-this"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
+     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
+     
+     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
+     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+   <div class="layui-body layui-tab-content site-demo site-demo-body">
+    <div class="layui-tab-item layui-show">
+     <div class="layui-main">
+      <div id="LAY_preview">
+       <fieldset class="layui-elem-field layui-field-title">
+        <legend>Dubbo的线程模型是怎么样的？</legend>
+       </fieldset>
+       <div class="sinImgDiv">
+        <img src="images/dubbo_006.jpg" />
+       </div>
+       
+       <blockquote class="layui-elem-quote">
+        <p>如果事件处理的逻辑能迅速完成，并且不会发起新的IO请求，比如只是在内存中记个标识，则直接在IO线程上处理更快，因为减少了线程池调度</p>
+        <p>但如果事件处理逻辑较慢，或者需要发起新的IO请求，比如需要查询数据库，则必须派发到线程池，否则IO线程阻塞，将导致不能接收其它请求</p>
+        <p>如果用IO线程处理事件，又在事件处理过程中发起新的IO请求，比如在连接事件中发起登录请求，会报“可能引发死锁”异常，但不会真死锁</p>
+       </blockquote>
+       
+       <blockquote class="layui-elem-quote indent-area">
+        <p class="notIndent"><strong>Dispatcher</strong></p>
+        <p>all:所有消息都派发到线程池，包括请求，响应，连接事件，断开事件，心跳等</p>
+        <p>direct:所有消息都不派发到线程池，全部在IO线程上直接执行</p>
+        <p>message:只有请求响应消息派发到线程池，其它连接断开事件，心跳等消息，直接在IO线程上执行</p>
+        <p>connection:在IO线程上，将连接断开事件放入队列，有序逐个执行，其它消息派发到线程池</p>
+        <p class="notIndent"><strong>ThreadPool</strong></p>
+        <p>fixed:固定大小线程池，启动时建立线程，不关闭，一直持有(缺省)</p>
+        <p>cached:缓存线程池，空闲一分钟自动删除，需要时重建</p>
+        <p>limited:可伸缩线程池，但池中的线程数只会增长不会收缩(为避免收缩时突然来了大流量引起的性能问题)</p>
+       </blockquote>
+       
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
+<script>
+layui.use("layer", function() {
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "status": 1,
+  "msg": "",
+  "title": "JSON请求的相册",
+  "id": 8,
+  "start": 0,
+  "data": [
+    {
+      "alt": "LayIM 2.0",
+      "pid": 109,
+      "src": "../images/layui_002.jpg",
+      "thumb": ""
+    },
+    {
+      "alt": "说好的，一起Fly",
+      "pid": 110,
+      "src": "../images/layui_003.jpg",
+      "thumb": ""
+    },
+    {
+      "alt": "星空如此深邃",
+      "pid": 113,
+      "src": "../images/layui_g_004.gif",
+      "thumb": ""
+    }
+  ]
+}

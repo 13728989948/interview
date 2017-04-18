@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Java基础-线程</title>
+<meta name="robots" content="all" />
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="expires" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+ <div class="layui-layout layui-layout-admin">
+  <div class="layui-header header header-demo">
+   <div class="layui-main">
+    <a class="logo" href="/"></a>
+    <ul class="layui-nav">
+     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-side layui-bg-black">
+   <div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree site-demo-nav">
+     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
+     <li class="layui-nav-item layui-this"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
+     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
+     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+   <div class="layui-body layui-tab-content site-demo site-demo-body">
+    <div class="layui-tab-item layui-show">
+     <div class="layui-main">
+      <div id="LAY_preview">
+       <fieldset class="layui-elem-field layui-field-title">
+        <legend>线程Thread有几种状态,怎么理解?</legend>
+       </fieldset>
+       <div class="sinImgDiv">
+        <img src="images/base_p_005.png" />
+       </div>
+       <blockquote class="layui-elem-quote">
+        <div><strong>初始状态(New)</strong>：新创建了一个线程对象,还没有调用线程的start时</div>
+        <div><strong>就绪状态(Runnable)</strong>：也是可运行状态,调用start方法后,等待获取Cpu使用权</div>
+        <div><strong>运行状态(Running)</strong>：就绪状态的线程获取了Cpu,执行程序代码</div>
+        <div class="indent-area">
+         <p class="notIndent"><strong>阻塞状态(Blocked)</strong>：</p>
+         <p>等待阻塞：运行的线程执行wait()方法，该线程会释放占用的所有资源，JVM会把该线程放入"等待池"中。进入这个状态后，是不能自动唤醒的，必须依靠其他线程调用notify()或notifyAll()方法才能被唤醒</p>
+         <p>同步阻塞：运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则JVM会把该线程放入"锁池"中</p>
+         <p>其他阻塞：运行的线程执行sleep()或join()方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态</p>
+        </div>
+        <div><strong>死亡状态</strong>：线程执行完了或者因异常退出了run()方法，该线程结束生命周期</div>
+       </blockquote>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

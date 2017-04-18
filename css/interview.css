@@ -1,0 +1,33 @@
+.noMargin{margin:0 !important;}
+.noPadding{padding:0 !important;}
+
+/**链接弹出内容********************************************/
+.lkPopCon{font-size:14px;padding:4px;}
+.lkTipCon{font-size:14px;padding:4px;line-height:24px;}
+.goToInterview{padding:20px;}
+
+/**链接文字**********************************************/
+.lkPop{color:#0990AD;cursor:pointer;}
+.lkPop:hover{color:#09628C}
+.lkTip{color:#009688;cursor:pointer;}
+.lkTip:hover{}
+.lkBlank{color:#963000;cursor:pointer;}
+.lkBlank:hover{color:#963000;text-decoration:underline;}
+
+/**高亮************************************************/
+.answer{color:#009688}
+
+/**单个图片Div*******************************************/
+.sinImgDiv{margin:5px;}
+
+/**单个代码Div*******************************************/
+.sinCodeDiv{margin:5px 0;}
+
+.indent-area>p{text-indent:20px;}
+.indent-area>p.notIndent{text-indent:0px;}
+
+/**混合Div*********************************************/
+.hhDiv{position:relative;margin:5px 0;}
+.hhDiv .codeDiv{position:relative;top:0px;left:0px;}
+.hhDiv .imgDiv{position:absolute;top:0px;left:0px;}
+.hhDiv .textDiv{position:absolute;top:0px;left:0px;}

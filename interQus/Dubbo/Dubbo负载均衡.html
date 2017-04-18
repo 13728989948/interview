@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Dubbo负载均衡</title>
+<meta name="robots" content="all" />
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="expires" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+</head>
+
+<body>
+ <div class="layui-layout layui-layout-admin">
+  <div class="layui-header header header-demo">
+   <div class="layui-main">
+    <a class="logo" href="/"></a>
+    <ul class="layui-nav">
+     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-side layui-bg-black">
+   <div class="layui-side-scroll">
+    <ul class="layui-nav layui-nav-tree site-demo-nav">
+     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
+     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
+     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
+     <li class="layui-nav-item layui-this"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
+     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+
+     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
+     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
+     
+     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
+     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
+    </ul>
+   </div>
+  </div>
+  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
+   <div class="layui-body layui-tab-content site-demo site-demo-body">
+    <div class="layui-tab-item layui-show">
+     <div class="layui-main">
+      <div id="LAY_preview">
+       <fieldset class="layui-elem-field layui-field-title">
+        <legend>Dubbo负载均衡有哪几种方式？</legend>
+       </fieldset>
+       <div class="sinImgDiv">
+        <img src="images/dubbo_005.jpg" />
+       </div>
+       
+       <blockquote class="layui-elem-quote indent-area">
+        <p class="notIndent"><strong>Random LoadBalance:</strong></p>
+        <p>随机，按权重设置随机概率</p>
+        <p>在一个截面上碰撞的概率高，但调用量越大分布越均匀，而且按概率使用权重后也比较均匀，有利于动态调整提供者权重</p>
+        <p class="notIndent"><strong>RoundRobin LoadBalance:</strong></p>
+        <p>轮循，按公约后的权重设置轮循比率</p>
+        <p>存在问题：慢的提供者累积请求问题，如：第二台机器很慢，但没挂，当请求调到第二台时就卡在那，久而久之，所有请求都卡在这台机器上</p>
+        <p class="notIndent"><strong>LeastActive LoadBalance:</strong></p>
+        <p>最少活跃调用数，相同活跃数的随机，活跃数指调用前后计数差</p>
+        <p>使慢的提供者收到更少请求，因为越慢的提供者的调用前后计数差会越大</p>
+        <p class="notIndent"><strong>ConsistentHash LoadBalance:</strong></p>
+        <p>一致性Hash，相同参数的请求总是发到同一提供者</p>
+        <p>当某一台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动</p>
+        <p>缺省只对第一个参数Hash，如果要修改，请配置&lt;dubbo:parameter key="hash.arguments" value="0,1"/&gt;</p>
+        <p>缺省用160份虚拟节点，如果要修改，请配置&lt;dubbo:parameter key="hash.nodes" value="320"/&gt;</p>
+       </blockquote>
+       
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
