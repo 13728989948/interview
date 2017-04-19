@@ -40,7 +40,7 @@
 .layui-header{position:relative;z-index:1000;height:65px;}
 .layui-header a:hover{transition:all .5s;-webkit-transition:all .5s;}
 .layui-side{position:fixed;top:0;bottom:0;z-index:999;width:200px;overflow-x:hidden;}
-.layui-side-scroll{width:220px;height:100%;overflow-x:hidden;}
+.layui-side-scroll{height:100%;overflow-x:hidden;}
 .layui-body{position:absolute;left:200px;right:0;top:0;bottom:0;z-index:998;width:auto;overflow:hidden;overflow-y:auto;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
 
 /* 后台布局风格 */
