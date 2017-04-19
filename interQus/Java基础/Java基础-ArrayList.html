@@ -1,104 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Java基础-ArrayList</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Array和ArrayList的区别是什么</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p><strong>初始化：</strong>Array初始化必须指定长度,ArrayList不用</p>
-        <p><strong>连续性：</strong>Array是连续存放的,ArrayList可能不连续</p>
-        <p><strong>同构性：</strong>Array只能存同构元素,ArrayList可以存放异构元素(因为内部是Object类型)</p>
-        <p><strong>修改元素：</strong>Array不能在指定位置插入元素,ArrayList可以</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>CopyOnWriteArrayList有什么特点</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>CopyOnWriteArrayList是一个在写的时候复制的容器,比如添加元素时,先将当前容器复制一份作为新容器,然后往新容器添加内容,添加完后将旧容器地址指向新容器</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>CopyOnWriteArrayList的实现原理是什么</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkGjdm" class="lkPop">点击查看关键代码</em></p>
-        <p>比如在添加元素时,复制元素先加一把锁,复制完后,到finally里面释放锁</p>
-        <p>读的时候没有加锁,若读的时候多个线程正在向CopyOnWriteArrayList添加数据,这时读取出来的数据还是旧数据</p>
-        <p><strong>使用环境：</strong>读多写少的多线程环境中</p>
-        <p><strong>存在缺点：</strong>1.由于是要先写,当内存需求比较大时,GC消耗时间会比较大</p>
-        <p><strong>存在缺点：</strong>2.CopyOnWrite容器只能保证数据的最终一致性,不能保证实时一致性,上面有提到还是读取的旧数据问题</p>
-       </blockquote>
-      </div>
-     </div>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Array和ArrayList的区别是什么</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p><strong>初始化：</strong>Array初始化必须指定长度,ArrayList不用</p>
+      <p><strong>连续性：</strong>Array是连续存放的,ArrayList可能不连续</p>
+      <p><strong>同构性：</strong>Array只能存同构元素,ArrayList可以存放异构元素(因为内部是Object类型)</p>
+      <p><strong>修改元素：</strong>Array不能在指定位置插入元素,ArrayList可以</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>CopyOnWriteArrayList有什么特点</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>CopyOnWriteArrayList是一个在写的时候复制的容器,比如添加元素时,先将当前容器复制一份作为新容器,然后往新容器添加内容,添加完后将旧容器地址指向新容器</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>CopyOnWriteArrayList的实现原理是什么</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkGjdm" class="lkPop">点击查看关键代码</em></p>
+      <p>比如在添加元素时,复制元素先加一把锁,复制完后,到finally里面释放锁</p>
+      <p>读的时候没有加锁,若读的时候多个线程正在向CopyOnWriteArrayList添加数据,这时读取出来的数据还是旧数据</p>
+      <p><strong>使用环境：</strong>读多写少的多线程环境中</p>
+      <p><strong>存在缺点：</strong>1.由于是要先写,当内存需求比较大时,GC消耗时间会比较大</p>
+      <p><strong>存在缺点：</strong>2.CopyOnWrite容器只能保证数据的最终一致性,不能保证实时一致性,上面有提到还是读取的旧数据问题</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 <script>

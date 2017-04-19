@@ -68,8 +68,8 @@ function bindClickDocClosePop(elId) {
 	$(document).bind("click", function(event) {
 		var tar = $(event.target);
 		var isCfEl = (tar.hasClass("lkPop") || tar.hasClass("lkTip"));
-		var parents = tar.parents(".layui-layer");
-		if (!isCfEl && !parents.length) {
+		var parents = tar.parents(".mainCon");
+		if (!isCfEl && parents.length) {
 			layer.closeAll();
 		}
 	});

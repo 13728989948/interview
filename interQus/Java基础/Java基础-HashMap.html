@@ -1,152 +1,135 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Java基础-HashMap</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>HashMap数据结构</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/base_p_001.png" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>数据结构：数组+链表</p>
-        <p>数组的特点：空间连续,查询快,但是插入和删除较慢,因为要移动元素</p>
-        <p>链表恰好相反：增加删除快，查找慢</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>HashMap的存取原理</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkGjdm" class="lkPop">点击查看关键代码</em></p>
-        <p>HashMap的一个数组元素为一个Entry(key+value键值对)</p>
-        <p>储存时：先对Key做hash预处理,得到一个hash值,然后将该hash值与Entry的长度进行取模得到Entry的索引值</p>
-        <p>储存时：然后遍历所有Entry若Entry的next对象的key和hash值和指定的key和hash值都相同就覆盖该值,若没有相同的就在该索引处添加一个新的Entry</p>
-        <p>储存时的hash冲突：当取值时和待储存时的Key的Hash值与Entry的长度取模得到的索引值相同时就会产生hash冲突</p>
-       </blockquote>
-        <fieldset class="layui-elem-field layui-field-title">
-        <legend>HashMap是怎么解决hash冲突的</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>HashMap的一个数组元素为一个Entry(key+value键值对)</p>
-        <p>若index=0,Entry[0]=A,然后又储存一个Entry B,其index计算出来也是0,那么HashMap处理方式为:B.next = A,Entry[0]=B若又储存一个Entry C,其index计算出来还是为0,那么HashMap处理方式为:C.next=B,Entry[0]=C</p>
-        <p>总的来说：数组中存储的是最后插入的元素,并把之前那个元素保存为最后那个元素的next,这就是链地址法解决Hash冲突</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>HashMap既然采用链地址发解决hash冲突,若这个链很长(会不会影响性能呢),HashMap是怎么优化其性能的</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>HashMap通过一个装载因子来优化的(默认值是0.75,即四分之三)</p>
-        <p>hash表3/4已经被填满时,HashMap就会扩容(主要是把当前的hash表数据转移到扩容后的hash表中)</p>
-        <p>为什么要用0.75呢,因为太高的话会增加查询数据开销,太低的话会增加hash表占用的内存空间</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>HashMap为什么线程不安全</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>当两个线程同时调用addEntry时,产生的index相同,这时hash碰撞,若A先addEntry,那么B就会覆盖A的操作</p>
-        <p>当多个线程执行put方法时,hash表达到扩容条件时,每个线程都会对该hash表进行扩容,但最终只有一个线程的扩容结果会赋给table,这样就会导致其他线程数据丢失</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>SynchronizedMap是什么?什么时候线程不安全</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>SynchronizedMap是一个同步包装器,是Collections.synchronizedMap的内部类,里面的方法都实现了对当前对象的synchronized同步</p>
-        <p>线程不安全的情况：虽然所有方法都实现了同步,若单单调用一个方法如:addEntry时是线程安全的,但若多段代码在一起:如先用containsKey判断key是否存在,再用remove删除元素</p>
-        <p>这时整块代码就不会同步了,因为两个线程方式都通过containsKey时,其中一个线程已经remove调了这个元素,但另外一个线程将会遇到remove一个空元素</p>
-        <p><strong>解决方法:</strong>就是对该代码块进行同步(这样效率就低了)</p>
-        <p>线程不安全的情况2：当我们遍历Map时使用keySet然后使用Iterator迭代,这时keySet和Iterator都是Map的一个视图,当一个线程正在迭代Map中的元素时,另一个线程可能正在修改其中的元素,此时,就会抛出ConcurrentModificationException异常</p>
-        <p><strong>解决方法:</strong>直接返回元素的副本而不是视图,这个可以通过集合类的 toArray()方法实现(但创建副本的方式效率比之前有所降低)</p>
-        <p><strong>解决方法2:</strong>迭代的时候锁住整个集合(这样效率就更低了)</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Hashtable怎么实现线程安全的,其特点是什么</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>Hashtable在内部方法定义上实现了synchronized同步,这样一次性锁整个hash表,是阻塞的,所以是绝对线程安全的</p>
-        <p>当Hashtable的大小增加到一定的时候,性能会急剧下降,因为迭代时需要被锁定很长的时间</p>
-        <p>注意:Hashtable对Iterator迭代器映射结构的修改会抛异常</p>
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>ConcurrentHashMap怎么实现线程安全的,其特点是什么</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkGjdmChm" class="lkPop">点击查看关键代码</em></p>
-        <p>ConcurrentHashMap使用了线程锁分段技术</p>
-        <p>它包含一个segment数组,将数据分段存储(默认16个数据段),给每一段数据配一把锁,每次访问只允许一个线程修改哈希表的映射关系</p>
-        <p>如get,put,remove等常用操作只锁当前需要用到的数据段(segment),写线程才需要锁定,读线程不会锁定</p>
-        <p>ConcurrentHashMap是设计为非阻塞的,而Hashtable是阻塞的</p>
-       </blockquote>
-      </div>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>HashMap数据结构</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/base_p_001.png" />
      </div>
+     <blockquote class="layui-elem-quote">
+      <p>数据结构：数组+链表</p>
+      <p>数组的特点：空间连续,查询快,但是插入和删除较慢,因为要移动元素</p>
+      <p>链表恰好相反：增加删除快，查找慢</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>HashMap的存取原理</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkGjdm" class="lkPop">点击查看关键代码</em></p>
+      <p>HashMap的一个数组元素为一个Entry(key+value键值对)</p>
+      <p>储存时：先对Key做hash预处理,得到一个hash值,然后将该hash值与Entry的长度进行取模得到Entry的索引值</p>
+      <p>储存时：然后遍历所有Entry若Entry的next对象的key和hash值和指定的key和hash值都相同就覆盖该值,若没有相同的就在该索引处添加一个新的Entry</p>
+      <p>储存时的hash冲突：当取值时和待储存时的Key的Hash值与Entry的长度取模得到的索引值相同时就会产生hash冲突</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>HashMap是怎么解决hash冲突的</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>HashMap的一个数组元素为一个Entry(key+value键值对)</p>
+      <p>若index=0,Entry[0]=A,然后又储存一个Entry B,其index计算出来也是0,那么HashMap处理方式为:B.next = A,Entry[0]=B若又储存一个Entry C,其index计算出来还是为0,那么HashMap处理方式为:C.next=B,Entry[0]=C</p>
+      <p>总的来说：数组中存储的是最后插入的元素,并把之前那个元素保存为最后那个元素的next,这就是链地址法解决Hash冲突</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>HashMap既然采用链地址发解决hash冲突,若这个链很长(会不会影响性能呢),HashMap是怎么优化其性能的</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>HashMap通过一个装载因子来优化的(默认值是0.75,即四分之三)</p>
+      <p>hash表3/4已经被填满时,HashMap就会扩容(主要是把当前的hash表数据转移到扩容后的hash表中)</p>
+      <p>为什么要用0.75呢,因为太高的话会增加查询数据开销,太低的话会增加hash表占用的内存空间</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>HashMap为什么线程不安全</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>当两个线程同时调用addEntry时,产生的index相同,这时hash碰撞,若A先addEntry,那么B就会覆盖A的操作</p>
+      <p>当多个线程执行put方法时,hash表达到扩容条件时,每个线程都会对该hash表进行扩容,但最终只有一个线程的扩容结果会赋给table,这样就会导致其他线程数据丢失</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>SynchronizedMap是什么?什么时候线程不安全</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>SynchronizedMap是一个同步包装器,是Collections.synchronizedMap的内部类,里面的方法都实现了对当前对象的synchronized同步</p>
+      <p>线程不安全的情况：虽然所有方法都实现了同步,若单单调用一个方法如:addEntry时是线程安全的,但若多段代码在一起:如先用containsKey判断key是否存在,再用remove删除元素</p>
+      <p>这时整块代码就不会同步了,因为两个线程方式都通过containsKey时,其中一个线程已经remove调了这个元素,但另外一个线程将会遇到remove一个空元素</p>
+      <p><strong>解决方法:</strong>就是对该代码块进行同步(这样效率就低了)</p>
+      <p>线程不安全的情况2：当我们遍历Map时使用keySet然后使用Iterator迭代,这时keySet和Iterator都是Map的一个视图,当一个线程正在迭代Map中的元素时,另一个线程可能正在修改其中的元素,此时,就会抛出ConcurrentModificationException异常</p>
+      <p><strong>解决方法:</strong>直接返回元素的副本而不是视图,这个可以通过集合类的 toArray()方法实现(但创建副本的方式效率比之前有所降低)</p>
+      <p><strong>解决方法2:</strong>迭代的时候锁住整个集合(这样效率就更低了)</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Hashtable怎么实现线程安全的,其特点是什么</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>Hashtable在内部方法定义上实现了synchronized同步,这样一次性锁整个hash表,是阻塞的,所以是绝对线程安全的</p>
+      <p>当Hashtable的大小增加到一定的时候,性能会急剧下降,因为迭代时需要被锁定很长的时间</p>
+      <p>注意:Hashtable对Iterator迭代器映射结构的修改会抛异常</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>ConcurrentHashMap怎么实现线程安全的,其特点是什么</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkGjdmChm" class="lkPop">点击查看关键代码</em></p>
+      <p>ConcurrentHashMap使用了线程锁分段技术</p>
+      <p>它包含一个segment数组,将数据分段存储(默认16个数据段),给每一段数据配一把锁,每次访问只允许一个线程修改哈希表的映射关系</p>
+      <p>如get,put,remove等常用操作只锁当前需要用到的数据段(segment),写线程才需要锁定,读线程不会锁定</p>
+      <p>ConcurrentHashMap是设计为非阻塞的,而Hashtable是阻塞的</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 <script>
