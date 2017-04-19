@@ -1,120 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Dubbo基础</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>什么是Dubbo</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <span>Dubbo是阿里巴巴的<em id="lkSoa" class="lkTip">SOA</em>框架，</span>
-        <span>实现了<em id="lkRpc" class="lkTip">RPC</em>远程服务调用</span>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>为什么要用Dubbo(即Dubbo的应用背景)</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>用户增多后,网站规模必将扩大常规的ORM,MVC已不能满足需要,这时需要增加RPC来确保服务有条不紊的进行</p>
-       </blockquote>
-       <div class="sinImgDiv">
-        <img src="images/dubbo_002.jpg" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>单一应用架构:当网站流量很小时,只需一个应用,将所有功能都部署在一起,靠增加机器来提高加速度,这时用的是:数据访问框架(ORM)</p>
-        <p>垂直应用架构:当访问量逐渐增大,将应用拆成互不相干的几个应用,以提升效率,这时用的是:Web框架(MVC)</p>
-        <p>分布式服务架构:当垂直应用越来越多,应用之间存在交互,这时将业务抽取出来,作为独立的服务,形成稳定的服务中心,使前端应用能更快速的响应多变的市场需求,这时用的是:分布式服务框架(RPC)</p>
-        <p>流动计算架构:当服务越来越多,容量的评估,小服务资源的浪费等问题逐渐显现,此时需增加一个调度中心基于访问压力实时管理集群容量,提高集群利用率,这时用的是:资源调度和治理中心(SOA)</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>怎样知道服务需要多少机器支撑,什么时候该加机器？</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/dubbo_003.jpg" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>第一步:要将服务现在每天的调用量,响应时间,都统计出来,作为容量规划的参考指标</p>
-        <p>第二部:动态调整权重,在线上将某台机器的权重一直加大,并在加大的过程中记录响应时间的变化,直到响应时间到达阀值,记录此时的访问量,再以此访问量乘以机器数反推总容量</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Dubbo有哪些相关的技术名词？</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/dubbo_004.jpg" />
-       </div>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>什么是Dubbo</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <span>Dubbo是阿里巴巴的<em id="lkSoa" class="lkTip">SOA</em>框架，</span>
+      <span>实现了<em id="lkRpc" class="lkTip">RPC</em>远程服务调用</span>
+     </blockquote>
 
-      </div>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>为什么要用Dubbo(即Dubbo的应用背景)</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>用户增多后,网站规模必将扩大常规的ORM,MVC已不能满足需要,这时需要增加RPC来确保服务有条不紊的进行</p>
+     </blockquote>
+     <div class="sinImgDiv">
+      <img src="images/dubbo_002.jpg" />
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>单一应用架构:当网站流量很小时,只需一个应用,将所有功能都部署在一起,靠增加机器来提高加速度,这时用的是:数据访问框架(ORM)</p>
+      <p>垂直应用架构:当访问量逐渐增大,将应用拆成互不相干的几个应用,以提升效率,这时用的是:Web框架(MVC)</p>
+      <p>分布式服务架构:当垂直应用越来越多,应用之间存在交互,这时将业务抽取出来,作为独立的服务,形成稳定的服务中心,使前端应用能更快速的响应多变的市场需求,这时用的是:分布式服务框架(RPC)</p>
+      <p>流动计算架构:当服务越来越多,容量的评估,小服务资源的浪费等问题逐渐显现,此时需增加一个调度中心基于访问压力实时管理集群容量,提高集群利用率,这时用的是:资源调度和治理中心(SOA)</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>怎样知道服务需要多少机器支撑,什么时候该加机器？</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/dubbo_003.jpg" />
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>第一步:要将服务现在每天的调用量,响应时间,都统计出来,作为容量规划的参考指标</p>
+      <p>第二部:动态调整权重,在线上将某台机器的权重一直加大,并在加大的过程中记录响应时间的变化,直到响应时间到达阀值,记录此时的访问量,再以此访问量乘以机器数反推总容量</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Dubbo有哪些相关的技术名词？</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/dubbo_004.jpg" />
      </div>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 <script>
