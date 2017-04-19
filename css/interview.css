@@ -31,6 +31,7 @@
 
 /**混合Div*********************************************/
 .hhDiv{position:relative;margin:5px 0;}
+.hhDiv img{max-width:100vw;}
 .hhDiv .imgDiv{position:absolute;top:0px;left:0px;}
 .hhDiv .codeDiv{position:relative;top:0px;left:0px;}
 .hhDiv .textDiv{position:absolute;top:0px;left:0px;}
