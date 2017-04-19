@@ -5,8 +5,8 @@ function createSideBar() {
 	html += "   <div class=\"layui-side-scroll\">" + "\n";
 	html += "    <ul id=\"layui-nav-ul\" class=\"layui-nav layui-nav-tree\">" + "\n";
 	html += "     <li class=\"layui-nav-item layui-nav-title\"><a>Java基础</a></li>" + "\n";
-	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础.html\">Java基础</a></li>" + "\n";
-	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础-线程.html\">Java基础-线程</a></li>" + "\n";
+	html += "     <li class=\"layui-nav-item\"><a href=\"../interQus/Java基础/Java基础.html\">Java基础</a></li>" + "\n";
+	html += "     <li class=\"layui-nav-item\"><a href=\"../interQus/Java基础/Java基础-线程.html\">Java基础-线程</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础-HashMap.html\">Java基础-HashMap</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础-ArrayList.html\">Java基础-ArrayList</a></li>" + "\n";
 	html += "" + "\n";
