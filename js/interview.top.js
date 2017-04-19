@@ -3,7 +3,7 @@ var is
 function createHeader() {
 	var html = "";
 	html += "<div class=\"layui-header header\">" + "\n";
-	html += " <div class=\"mbx-exp\"><label for=\"clickShowBtn\" class=\"mbx-exp-label\"><img id=\"mbx_image\" src=\"../../images/qt/index/index_s_004.svg\"></label></div>" + "\n";
+	html += " <div class=\"mbx-exp\"><label for=\"clickShowBtn\" class=\"mbx-exp-label\"><img id=\"mbx_image\" src=\"/images/qt/index/index_s_001.svg\"></label></div>" + "\n";
 	html += " <a class=\"logo-lk\" href=\"javascript:;\">" + "\n";
 	html += "  <div class=\"logo-wrap\">" + "\n";
 	html += "   <div class=\"logo-div\"></div>" + "\n";
