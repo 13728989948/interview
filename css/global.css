@@ -42,15 +42,20 @@ pre{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-s
 .header .layui-nav .layui-nav-item a{color:#444;}
 .header .layui-nav .layui-nav-item a:hover{color:#000;}
 
+.layui-main .layui-elem-quote:last-child{margin-bottom:0 !important;}
+
 @media screen and (max-width:750px) {
+	.header .logo-div{height:34%;top:33%;}
 	.header .logo-wrap{margin:0 auto;}
 	.header .layui-nav .layui-nav-item{margin:0 10px;}
 	.header .layui-nav .layui-nav-item a{padding:0 5px;}
 	.header .mbx-exp{display:block;}
 
-	.layui-body{position:static;bottom:0;left:0 !important;}
+	.layui-body{left:0 !important;}
+	
+	.layui-main{margin:0 5px !important;}
+	.layui-main .layui-elem-quote{padding:10px !important;}
 
-	.layui-layout-admin .layui-main{margin:0 10px !important;}
 	.layui-layout-admin .layui-side{width:180px !important;top:0;left:-10000px;position:fixed;transition:all .05s;-webkit-transition:all .05s;z-index:10000;}
 	.layui-layout-admin .layui-nav-tree{width:180px !important;}
 

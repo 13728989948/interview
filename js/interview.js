@@ -66,11 +66,20 @@ function bindClickDocClosePop(elId) {
 
 	$(document).unbind("click");
 	$(document).bind("click", function(event) {
-		var tar = $(event.target);
-		var isCfEl = (tar.hasClass("lkPop") || tar.hasClass("lkTip"));
-		var parents = tar.parents(".mainCon");
-		if (!isCfEl && parents.length) {
-			layer.closeAll();
-		}
+		ckAndCloseLayer(event);
 	});
+	$(document).unbind("touchstart");
+	$(document).bind("touchstart", function(event) {
+		ckAndCloseLayer(event);
+	});
+}
+
+// 检查并关闭Layer
+function ckAndCloseLayer(event) {
+	var tar = $(event.target);
+	var isCfEl = (tar.hasClass("lkPop") || tar.hasClass("lkTip"));
+	var parents = tar.parents(".mainCon");
+	if (!isCfEl && parents.length) {
+		layer.closeAll();
+	}
 }
