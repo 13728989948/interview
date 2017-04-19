@@ -1,128 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Dubbo工作原理</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-     
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Dubbo工作原理是什么</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/dubbo_p_001.png" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>Monitor：调用监控中心(可统计调用次数)</p>
-        <p>Provider：暴露服务的提供方</p>
-        <p>Registry：服务注册中心和发现中心</p>
-        <p>Consumer：调用远程服务的消费方</p>
-        <p>Container：服务运行的Web容器(如Tomcat)</p>
-       </blockquote>
-
-       <blockquote class="layui-elem-quote">
-        <p>(0.start)服务器负责启动，加载</p>
-        <p>(1.register)提供者在启动时，向注册中心注册自己提供的服务</p>
-        <p>(2.subscribe)消费者启动时，向注册中心订阅自己所需的服务</p>
-        <p>(3.notify)注册中心返回提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者</p>
-        <p>(4.invoke)消费者调用远程接口，dubbo基于负载均衡算法，选一台提供者进行调用，如果调用失败则选择另一台。</p>
-        <p>(5.count)消费者和提供者，在内存中累计调用次数和调用时间，定时发送一次统计数据到监控中心</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Dubbo工作原理的四大特性是什么?请解释</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote indent-area">
-        <p class="notIndent"><strong>连通性:</strong></p>
-        <p>注册中心负责服务地址的注册与查找，相当于目录服务，服务提供者和消费者只在启动时与注册中心交互，注册中心不转发请求，压力较小</p>
-        <p>监控中心负责统计各服务调用次数，调用时间等，统计先在内存汇总后每分钟一次发送到监控中心服务器，并以报表展示</p>
-        <p>服务提供者向注册中心注册其提供的服务，并汇报调用时间到监控中心，此时间不包含网络开销</p>
-        <p>服务消费者向注册中心获取服务提供者地址列表，并根据负载算法直接调用提供者，同时汇报调用时间到监控中心，此时间包含网络开销</p>
-        <p>注册中心，服务提供者，服务消费者三者之间均为长连接，监控中心除外</p>
-        <p>注册中心通过长连接感知服务提供者的存在，服务提供者宕机，注册中心将立即推送事件通知消费者</p>
-        <p>注册中心和监控中心全部宕机，不影响已运行的提供者和消费者，消费者在本地缓存了提供者列表</p>
-        <p>注册中心和监控中心都是可选的，服务消费者可以直连服务提供者</p>
-        <p class="notIndent"><strong>健状性:</strong></p>
-        <p>监控中心宕掉不影响使用，只是丢失部分采样数据</p>
-        <p>数据库宕掉后，注册中心仍能通过缓存提供服务列表查询，但不能注册新服务</p>
-        <p>注册中心对等集群，任意一台宕掉后，将自动切换到另一台</p>
-        <p>注册中心全部宕掉后，服务提供者和服务消费者仍能通过本地缓存通讯</p>
-        <p>服务提供者无状态，任意一台宕掉后，不影响使用</p>
-        <p>服务提供者全部宕掉后，服务消费者应用将无法使用，并无限次重连等待服务提供者恢复</p>
-        <p class="notIndent"><strong>伸缩性:</strong></p>
-        <p>注册中心为对等集群，可动态增加机器部署实例，所有客户端将自动发现新的注册中心</p>
-        <p>服务提供者无状态，可动态增加机器部署实例，注册中心将推送新的服务提供者信息给消费者</p>
-        <p class="notIndent"><strong>升级性:</strong></p>
-        <p>当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力</p>
-       </blockquote>
-       
-      </div>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Dubbo工作原理是什么</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/dubbo_p_001.png" />
      </div>
+     <blockquote class="layui-elem-quote">
+      <p>Monitor：调用监控中心(可统计调用次数)</p>
+      <p>Provider：暴露服务的提供方</p>
+      <p>Registry：服务注册中心和发现中心</p>
+      <p>Consumer：调用远程服务的消费方</p>
+      <p>Container：服务运行的Web容器(如Tomcat)</p>
+     </blockquote>
+     <blockquote class="layui-elem-quote">
+      <p>(0.start)服务器负责启动，加载</p>
+      <p>(1.register)提供者在启动时，向注册中心注册自己提供的服务</p>
+      <p>(2.subscribe)消费者启动时，向注册中心订阅自己所需的服务</p>
+      <p>(3.notify)注册中心返回提供者地址列表给消费者，如果有变更，注册中心将基于长连接推送变更数据给消费者</p>
+      <p>(4.invoke)消费者调用远程接口，dubbo基于负载均衡算法，选一台提供者进行调用，如果调用失败则选择另一台。</p>
+      <p>(5.count)消费者和提供者，在内存中累计调用次数和调用时间，定时发送一次统计数据到监控中心</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Dubbo工作原理的四大特性是什么?请解释</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote indent-area">
+      <p class="notIndent"><strong>连通性:</strong></p>
+      <p>注册中心负责服务地址的注册与查找，相当于目录服务，服务提供者和消费者只在启动时与注册中心交互，注册中心不转发请求，压力较小</p>
+      <p>监控中心负责统计各服务调用次数，调用时间等，统计先在内存汇总后每分钟一次发送到监控中心服务器，并以报表展示</p>
+      <p>服务提供者向注册中心注册其提供的服务，并汇报调用时间到监控中心，此时间不包含网络开销</p>
+      <p>服务消费者向注册中心获取服务提供者地址列表，并根据负载算法直接调用提供者，同时汇报调用时间到监控中心，此时间包含网络开销</p>
+      <p>注册中心，服务提供者，服务消费者三者之间均为长连接，监控中心除外</p>
+      <p>注册中心通过长连接感知服务提供者的存在，服务提供者宕机，注册中心将立即推送事件通知消费者</p>
+      <p>注册中心和监控中心全部宕机，不影响已运行的提供者和消费者，消费者在本地缓存了提供者列表</p>
+      <p>注册中心和监控中心都是可选的，服务消费者可以直连服务提供者</p>
+      <p class="notIndent"><strong>健状性:</strong></p>
+      <p>监控中心宕掉不影响使用，只是丢失部分采样数据</p>
+      <p>数据库宕掉后，注册中心仍能通过缓存提供服务列表查询，但不能注册新服务</p>
+      <p>注册中心对等集群，任意一台宕掉后，将自动切换到另一台</p>
+      <p>注册中心全部宕掉后，服务提供者和服务消费者仍能通过本地缓存通讯</p>
+      <p>服务提供者无状态，任意一台宕掉后，不影响使用</p>
+      <p>服务提供者全部宕掉后，服务消费者应用将无法使用，并无限次重连等待服务提供者恢复</p>
+      <p class="notIndent"><strong>伸缩性:</strong></p>
+      <p>注册中心为对等集群，可动态增加机器部署实例，所有客户端将自动发现新的注册中心</p>
+      <p>服务提供者无状态，可动态增加机器部署实例，注册中心将推送新的服务提供者信息给消费者</p>
+      <p class="notIndent"><strong>升级性:</strong></p>
+      <p>当服务集群规模进一步扩大，带动IT治理结构进一步升级，需要实现动态部署，进行流动计算，现有分布式服务架构不会带来阻力</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 </body>
