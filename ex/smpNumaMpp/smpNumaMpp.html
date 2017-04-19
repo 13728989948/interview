@@ -1,100 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>SMP,NUMA,MPP体系结构介绍</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
-<link href="../../css/interview.ex.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<style>
+.layui-body{left:0 !important;}
+</style>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>什么是SMP,NUMA,MPP</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>目前的商用服务器大体可以分为三类:SMP,NUMA,MPP</p>
-        <p><strong>SMP(Symmetric Multi-Processor):</strong>对称多处理器结构</p>
-        <p><strong>NUMA(Non-Uniform Memory Access):</strong>非一致存储访问结构</p>
-        <p><strong>MPP(Massive Parallel Processing):</strong>海量并行处理结构</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>SMP(Symmetric Multi-Processor)</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/smpNumaMpp_g_001.gif" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>所谓对称多处理器结构，是指服务器中多个CPU对称工作，无主次或从属关系</p>
-        <p>系统中所有资源(CPU、内存、I/O等)都是共享的</p>
-        <p>每个CPU必须通过相同的内存总线访问相同的内存资源，因此随着CPU数量的增加，内存访问冲突将迅速增加，最终会造成CPU资源的浪费</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>NUMA(Non-Uniform Memory Access)</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/smpNumaMpp_002.jpg" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>具有多个CPU模块，每个CPU模块由多个CPU(如4个)组成 </p>
-        <p>每个CPU模块具有独立的本地内存、I/O槽口</p>
-        <p>每个CPU模块之间可以通过互联模块进行连接和信息交互</p>
-        <p>可以较好地解决原来SMP系统的扩展问题，在一个物理服务器内可以支持上百个CPU，访问本地内存的速度将远远高于访问远地内存</p>
-        <p>由于访问远地内存的延时远远超过本地内存，因此当CPU数量增加时，系统性能无法线性增加</p>
-        <p>NUMA架构适用于OLTP(On-Line Transaction Processing联机事务处理过程)事务处理环境</p>
-        <p>OLTP 系统强调数据库内存效率，强调内存各种指标的命令率，强调绑定变量，强调并发操作</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>MPP(Massive Parallel Processing)</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/smpNumaMpp_g_003.gif" />
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>由多个SMP服务器通过一定的节点互联网络进行连接，扩展性最好</p>
-        <p>每个节点只访问自己的本地资源(内存、存储)</p>
-        <p>MPP架构适用于OLAP(On-Line Analytical Processing联机分析处理)</p>
-        <p>OLAP 系统则强调数据分析，强调SQL执行市场，强调磁盘I/O，强调分区等</p>
-       </blockquote>
-      </div>
+
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>什么是SMP,NUMA,MPP</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>目前的商用服务器大体可以分为三类:SMP,NUMA,MPP</p>
+      <p><strong>SMP(Symmetric Multi-Processor):</strong>对称多处理器结构</p>
+      <p><strong>NUMA(Non-Uniform Memory Access):</strong>非一致存储访问结构</p>
+      <p><strong>MPP(Massive Parallel Processing):</strong>海量并行处理结构</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>SMP(Symmetric Multi-Processor)</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/smpNumaMpp_g_001.gif" />
      </div>
+     <blockquote class="layui-elem-quote">
+      <p>所谓对称多处理器结构，是指服务器中多个CPU对称工作，无主次或从属关系</p>
+      <p>系统中所有资源(CPU、内存、I/O等)都是共享的</p>
+      <p>每个CPU必须通过相同的内存总线访问相同的内存资源，因此随着CPU数量的增加，内存访问冲突将迅速增加，最终会造成CPU资源的浪费</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>NUMA(Non-Uniform Memory Access)</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/smpNumaMpp_002.jpg" />
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>具有多个CPU模块，每个CPU模块由多个CPU(如4个)组成 </p>
+      <p>每个CPU模块具有独立的本地内存、I/O槽口</p>
+      <p>每个CPU模块之间可以通过互联模块进行连接和信息交互</p>
+      <p>可以较好地解决原来SMP系统的扩展问题，在一个物理服务器内可以支持上百个CPU，访问本地内存的速度将远远高于访问远地内存</p>
+      <p>由于访问远地内存的延时远远超过本地内存，因此当CPU数量增加时，系统性能无法线性增加</p>
+      <p>NUMA架构适用于OLTP(On-Line Transaction Processing联机事务处理过程)事务处理环境</p>
+      <p>OLTP 系统强调数据库内存效率，强调内存各种指标的命令率，强调绑定变量，强调并发操作</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>MPP(Massive Parallel Processing)</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/smpNumaMpp_g_003.gif" />
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>由多个SMP服务器通过一定的节点互联网络进行连接，扩展性最好</p>
+      <p>每个节点只访问自己的本地资源(内存、存储)</p>
+      <p>MPP架构适用于OLAP(On-Line Analytical Processing联机分析处理)</p>
+      <p>OLAP 系统则强调数据分析，强调SQL执行市场，强调磁盘I/O，强调分区等</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
 </body>

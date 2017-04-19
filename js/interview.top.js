@@ -1,9 +1,9 @@
 // 创建头部
 function createHeader() {
 	var html = "";
-	html +="  <div class=\"layui-header header header-demo\">"+"\n";
+	html +="  <div class=\"layui-header header\">"+"\n";
 	html +="   <div class=\"layui-main\">"+"\n";
-	html +="    <a class=\"logo\" href=\"/\"></a>"+"\n";
+	html +="    <a class=\"logoLk\" href=\"/\"></a>"+"\n";
 	html +="    <ul class=\"layui-nav\">"+"\n";
 	html +="     <li class=\"layui-nav-item layui-this\"><a id=\"goToInterview\" href=\"javascript:goToInterview();\">参加面试去</a></li>"+"\n";
 	html +="    </ul>"+"\n";
