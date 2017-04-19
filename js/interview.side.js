@@ -1,9 +1,9 @@
 // 创建边栏
 function createSideBar() {
 	var html = "";
-	html += "<div class=\"layui-side layui-bg-black\">" + "\n";
+	html += "  <div class=\"layui-side layui-bg-black\">" + "\n";
 	html += "   <div class=\"layui-side-scroll\">" + "\n";
-	html += "    <ul id=\"layui-nav-ul\" class=\"layui-nav layui-nav-tree site-demo-nav\">" + "\n";
+	html += "    <ul id=\"layui-nav-ul\" class=\"layui-nav layui-nav-tree\">" + "\n";
 	html += "     <li class=\"layui-nav-item layui-nav-title\"><a>Java基础</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础.html\">Java基础</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"../Java基础/Java基础-线程.html\">Java基础-线程</a></li>" + "\n";
