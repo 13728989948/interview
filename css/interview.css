@@ -19,6 +19,7 @@
 
 /**单个图片Div*******************************************/
 .sinImgDiv{margin:5px;}
+.sinImgDiv img{max-width:100vw;}
 
 /**单个代码Div*******************************************/
 .sinCodeDiv{margin:5px 0;}
