@@ -1,85 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Dubbo异步调用</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/highlight.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Dubbo的异步调用有什么特点？</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/dubbo_007.jpg" />
-       </div>
-       
-       <blockquote class="layui-elem-quote">
-        <p>基于NIO的非阻塞实现并行调用，客户端不需要启动多线程即可完成并行调用多个远程服务，相对多线程开销较小</p>
-       </blockquote>
-       
-       <blockquote class="layui-elem-quote">
-        <p><strong>配置声明:</strong></p><pre><code class="xml">&lt;dubbo:reference id="fooService" interface="com.alibaba.foo.FooService"&gt;
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Dubbo的异步调用有什么特点？</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/dubbo_007.jpg" />
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>基于NIO的非阻塞实现并行调用，客户端不需要启动多线程即可完成并行调用多个远程服务，相对多线程开销较小</p>
+     </blockquote>
+     <blockquote class="layui-elem-quote">
+      <p><strong>配置声明:</strong></p><pre><code class="xml">&lt;dubbo:reference id="fooService" interface="com.alibaba.foo.FooService"&gt;
       &lt;dubbo:method name="findFoo" async="true" /&gt;
 &lt;/dubbo:reference&gt;
 &lt;dubbo:reference id="barService" interface="com.alibaba.bar.BarService"&gt;
@@ -99,17 +67,15 @@ Bar bar = barFuture.get();// 同理等待bar返回</code></pre>
 <pre><code class="xml">&lt;dubbo:method name="findFoo" async="true" sent="true" /&gt;</code></pre>
 <p>如果你只是想异步，完全忽略返回值，可以配置return="false"，以减少Future对象的创建和管理成本：</p>
 <pre><code class="xml">&lt;dubbo:method name="findFoo" async="true" return="false" /&gt;</code></pre>
-       </blockquote>
-      </div>
-     </div>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/highlight.js" type="text/javascript" charset="utf-8"></script>
 <script>
 layui.use("layer", function() {
