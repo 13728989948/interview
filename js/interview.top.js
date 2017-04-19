@@ -1,3 +1,4 @@
+var is
 // 创建头部
 function createHeader() {
 	var html = "";
@@ -8,9 +9,6 @@ function createHeader() {
 	html += "   <div class=\"logo-div\"></div>" + "\n";
 	html += "  </div>" + "\n";
 	html += " </a>" + "\n";
-//	html += " <ul class=\"layui-nav\">" + "\n";
-//	html += "  <li class=\"layui-nav-item layui-this\"><a target=\"_blank\" href=\"http://115.28.154.106\">Yoo视频直连</a></li>" + "\n";
-//	html += " </ul>" + "\n";
 	html += "</div>" + "\n";
 
 	document.write(html);
@@ -24,7 +22,7 @@ function createHeader() {
 			$("#mobileShade").remove();
 			return;
 		}
-
+		
 		$("body").addClass("site-mobile");
 		$("#mobileShade").remove();
 		$("body").append("<div id=\"mobileShade\" class=\"site-mobile-shade\"></div>");

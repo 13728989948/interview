@@ -68,8 +68,8 @@ function bindClickDocClosePop(elId) {
 	$(document).bind("click", function(event) {
 		ckAndCloseLayer(event);
 	});
-	$(document).unbind("touchstart");
-	$(document).bind("touchstart", function(event) {
+	$(document).unbind("touchend");
+	$(document).bind("touchend", function(event) {
 		ckAndCloseLayer(event);
 	});
 }
