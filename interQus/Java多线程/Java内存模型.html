@@ -1,208 +1,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Java内存模型</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/highlight.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java内存模型是什么?</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>JMM(Java Memory Model)指在Java中变量(特别是线程共享变量)的访问规则,以及在JVM中将变量储存到内存和从内存中读取的底层细节</p>
+     </blockquote>
 
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java内存模型是什么?</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>JMM(Java Memory Model)指在Java中变量(特别是线程共享变量)的访问规则,以及在JVM中将变量储存到内存和从内存中读取的底层细节</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>什么是Java内存模型的可见性?</legend>
-       </fieldset>
-       <div class="sinImgDiv">
-        <img src="images/mtt_p_001.png"/>
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>可见性：一个线程对共享变量值的修改,能够及时地被其他线程看到</p>
-        <p>共享变量：若一个变量在多个线程的工作内存中都存在副本,那么这个变量就是这几个线程的共享变量</p>
-       
-       </blockquote>
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>共享变量对线程有什么特点?共享变量的可见性实现原理是怎么样的？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>线程对共享变量的所有操作都必须在自己的工作内存中进行,不能直接从主内存中读写</p>
-        <p>不同线程之间无法直接访问其他线程工作内存中的变量,线程间变量的值传递是通过主内存来完成的</p>
-        <div class="indent-area">
-         <p class="notIndent"><strong>实现原理:</strong>(可以换个话题:如线程1对共享变量的修改要立刻被线程2及时看到系统是怎么实现的？)</p>
-         <p>把工作内存1中更新过的共享变量刷新到主内存中</p>
-         <p>将主内存中最新的共享变量的值更新到工作内存2中</p>
-        </div>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>synchronized是怎样实现内存可见性的？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>线程加锁时,先清空工作内存中共享变量的值,然后重新从主内存中读取该共享变量最新的值</p>
-        <p>线程解锁前,必须将共享变量的最新值刷新到主内存中</p>
-        <div class="indent-area">
-         <p class="notIndent">整个过程就是:</p>
-         <p>1.获取互斥锁</p>
-         <p>2.清空工作内存</p>
-         <p>3.从主内存拷贝变量的最新副本到工作内存</p>
-         <p>4.执行代码</p>
-         <p>5.将更改后的共享变量的值刷新到主内存</p>
-         <p>6.释放互斥锁</p>
-        </div>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>volatile是怎样实现内存可见性的？volatile能否保证复合操作时的原子性？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>对volatile执行写操作时,会在写操作后加入store屏障指令</p>
-        <p>对volatile执行读操作时,会在读操作前加入load屏障指令</p>
-        <div class="indent-area">
-         <p class="notIndent"><strong>线程写volatile变量的过程:</strong></p>
-         <p>1.改变线程工作内存中volatile变量副本的值</p>
-         <p>2.将改变后的副本的值从工作内存刷新到主内存</p>
-         <p class="notIndent"><strong>线程读volatile变量的过程:</strong></p>
-         <p>1.从主内存中读取volatile变量的最新值到线程的工作内存中</p>
-         <p>2.从工作内存中读取volatile变量的副本</p>
-         <p>volatile不能保证保证复合操作时的原子性</p>
-        </div>
-       </blockquote>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>什么是Java内存模型的可见性?</legend>
+     </fieldset>
+     <div class="sinImgDiv">
+      <img src="images/mtt_p_001.png"/>
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>可见性：一个线程对共享变量值的修改,能够及时地被其他线程看到</p>
+      <p>共享变量：若一个变量在多个线程的工作内存中都存在副本,那么这个变量就是这几个线程的共享变量</p>
+     </blockquote>
 
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>volatile的使用场景有哪些？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>volatile(一般用于读多写少的场景),应用必须满足两点:</p>
-        <p>1:对变量的写操作不依赖于当前值</p>
-        <p>2:该变量没有包含在具有其他变量的不变式中</p>
-        <div class="indent-area">
-         <p class="notIndent">以下的场景都是满足以上两点的:</p>
-         <p><em id="lkCj1" class="lkPop">场景1:状态标志</em></p>
-         <p><em id="lkCj2" class="lkPop">场景2:一次性安全发布</em></p>
-         <p><em id="lkCj3" class="lkPop">场景3:独立观察</em></p>
-         <p><em id="lkCj4" class="lkPop">场景4:Volatile Bean</em></p>
-         <p><em id="lkCj5" class="lkPop">场景5:开销较低的"读写锁"</em></p>
-        </div>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>什么是重排序？主要有哪几种类型？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>编译器和处理器会对代码进行重新排序,就是代码书写顺序和执行顺序不同，重排序会遵守as-if-serial语义</p>
-        <p>as-if-serial是指:单线程中编译器和处理器只会对数据没有依赖关系做重排序,保证和没有重排序执行的结果一致</p>
-        <p>重排序不会对单线程造成内存可见性问题,但对多线程可能会出现内存可见性问题</p>
-        <div class="indent-area">
-         <p class="notIndent">主要有以下几种类型:</p>
-         <p>编译器重排序</p>
-         <p>指令并行重排序</p>
-         <p>内存系统的重排序</p>
-        </div>
-       </blockquote>
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>共享变量对线程有什么特点?共享变量的可见性实现原理是怎么样的？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>线程对共享变量的所有操作都必须在自己的工作内存中进行,不能直接从主内存中读写</p>
+      <p>不同线程之间无法直接访问其他线程工作内存中的变量,线程间变量的值传递是通过主内存来完成的</p>
+      <div class="indent-area">
+       <p class="notIndent"><strong>实现原理:</strong>(可以换个话题:如线程1对共享变量的修改要立刻被线程2及时看到系统是怎么实现的？)</p>
+       <p>把工作内存1中更新过的共享变量刷新到主内存中</p>
+       <p>将主内存中最新的共享变量的值更新到工作内存2中</p>
+      </div>
+     </blockquote>
 
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>重排序为什么在多线程时会出现内存可见性问题？</legend>
-       </fieldset>
-       <div class="hhDiv">
-        <div class="codeDiv"><pre><code class="java">public class MyReorder {
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>synchronized是怎样实现内存可见性的？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>线程加锁时,先清空工作内存中共享变量的值,然后重新从主内存中读取该共享变量最新的值</p>
+      <p>线程解锁前,必须将共享变量的最新值刷新到主内存中</p>
+      <div class="indent-area">
+       <p class="notIndent">整个过程就是:</p>
+       <p>1.获取互斥锁</p>
+       <p>2.清空工作内存</p>
+       <p>3.从主内存拷贝变量的最新副本到工作内存</p>
+       <p>4.执行代码</p>
+       <p>5.将更改后的共享变量的值刷新到主内存</p>
+       <p>6.释放互斥锁</p>
+      </div>
+     </blockquote>
 
- int a = 0;
- boolean flag = false;
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>volatile是怎样实现内存可见性的？volatile能否保证复合操作时的原子性？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>对volatile执行写操作时,会在写操作后加入store屏障指令</p>
+      <p>对volatile执行读操作时,会在读操作前加入load屏障指令</p>
+      <div class="indent-area">
+       <p class="notIndent"><strong>线程写volatile变量的过程:</strong></p>
+       <p>1.改变线程工作内存中volatile变量副本的值</p>
+       <p>2.将改变后的副本的值从工作内存刷新到主内存</p>
+       <p class="notIndent"><strong>线程读volatile变量的过程:</strong></p>
+       <p>1.从主内存中读取volatile变量的最新值到线程的工作内存中</p>
+       <p>2.从工作内存中读取volatile变量的副本</p>
+       <p>volatile不能保证保证复合操作时的原子性</p>
+      </div>
+     </blockquote>
 
- public void writer() {
-  a = 1; // 1
-  flag = true; // 2
- }
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>volatile的使用场景有哪些？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>volatile(一般用于读多写少的场景),应用必须满足两点:</p>
+      <p>1:对变量的写操作不依赖于当前值</p>
+      <p>2:该变量没有包含在具有其他变量的不变式中</p>
+      <div class="indent-area">
+       <p class="notIndent">以下的场景都是满足以上两点的:</p>
+       <p><em id="lkCj1" class="lkPop">场景1:状态标志</em></p>
+       <p><em id="lkCj2" class="lkPop">场景2:一次性安全发布</em></p>
+       <p><em id="lkCj3" class="lkPop">场景3:独立观察</em></p>
+       <p><em id="lkCj4" class="lkPop">场景4:Volatile Bean</em></p>
+       <p><em id="lkCj5" class="lkPop">场景5:开销较低的"读写锁"</em></p>
+      </div>
+     </blockquote>
 
- void reader() {
-  if (flag) { // 3
-   int i = a * a; // 4
-   System.out.println(i);
-  }
- }
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>什么是重排序？主要有哪几种类型？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>编译器和处理器会对代码进行重新排序,就是代码书写顺序和执行顺序不同，重排序会遵守as-if-serial语义</p>
+      <p>as-if-serial是指:单线程中编译器和处理器只会对数据没有依赖关系做重排序,保证和没有重排序执行的结果一致</p>
+      <p>重排序不会对单线程造成内存可见性问题,但对多线程可能会出现内存可见性问题</p>
+      <div class="indent-area">
+       <p class="notIndent">主要有以下几种类型:</p>
+       <p>编译器重排序</p>
+       <p>指令并行重排序</p>
+       <p>内存系统的重排序</p>
+      </div>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>重排序为什么在多线程时会出现内存可见性问题？</legend>
+     </fieldset>
+     <div class="hhDiv">
+      <div class="codeDiv"><pre><code class="java">public class MyReorder {
+
+	int a = 0;
+	boolean flag = false;
+
+	public void writer() {
+		a = 1; // 1
+		flag = true; // 2
+	}
+
+	void reader() {
+		if (flag) { // 3
+			int i = a * a; // 4
+			System.out.println(i);
+		}
+	}
 }</code></pre>
-        </div>
-        <div class="imgDiv" style="left:250px;top:16px;">
-         <img src="images/mtt_p_008.png"/>
-        </div>
-        <div class="imgDiv" style="left:800px;top:16px;">
-         <img src="images/mtt_p_009.png"/>
-        </div>
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>第一幅图：操作1和操作2做了重排序，程序执行时，线程A首先写标记变量flag，随后线程B读这个变量。由于条件判断为真，线程B将读取变量a。此时，变量a还根本没有被线程A写入，在这里多线程程序的语义被重排序破坏了</p>
-        <p>第二幅图：类似解说</p>
-       </blockquote>
+      </div>
+      <div class="imgDiv" style="left:470px;top:16px;">
+       <img src="images/mtt_p_008.png"/>
+      </div>
+      <div class="imgDiv" style="left:980px;top:16px;">
+       <img src="images/mtt_p_009.png"/>
+      </div>
+     </div>
+     <blockquote class="layui-elem-quote">
+      <p>第一幅图：操作1和操作2做了重排序，程序执行时，线程A首先写标记变量flag，随后线程B读这个变量。由于条件判断为真，线程B将读取变量a。此时，变量a还根本没有被线程A写入，在这里多线程程序的语义被重排序破坏了</p>
+      <p>第二幅图：类似解说</p>
+     </blockquote>
 
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>什么是顺序一致性内存模型？</legend>
-       </fieldset>
-       <div class="hhDiv">
-        <div class="codeDiv"><pre><code class="java">public class MyReorderSxyzx {
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>什么是顺序一致性内存模型？</legend>
+     </fieldset>
+     <div class="hhDiv">
+      <div class="codeDiv"><pre><code class="java">public class MyReorderSxyzx {
 
 	int a = 0;
 	boolean flag = false;
@@ -219,37 +197,35 @@
 		}
 	}
 }</code></pre>
-        </div>
-        <div class="imgDiv" style="left:400px;top:16px;">
-         <img src="images/mtt_p_010.png"/>
-        </div>
-       </div>
-       <blockquote class="layui-elem-quote">
-        <p>顺序一致性内存模型类似于一个单摆,通过左右摆动的开关可以连接到任意一个线程。同时，每一个线程必须按程序的顺序来执行内存读写操作</p>
-        <p>在顺序一致性模型中，所有操作完全按程序的顺序串行执行。而在JMM中，临界区内的代码可以重排序(JMM不允许临界区内的代码逸出到临界区之外)</p>
-        <p>虽然线程A在临界区内做了重排序，由于监视器的互斥执行的特性，这里的线程B根本无法观察到线程A在临界区内的重排序。这种重排序既提高了执行效率，又没有改变程序的执行结果</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>final域的重排序规则是怎么样的？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>写final域的重排序规则禁止把final域的写重排序到构造函数之外</p>
-        <p>编译器会在final域的写之后，构造函数return之前，插入一个StoreStore屏障</p>
-        <p>在读一个对象的final域之前，一定会先读包含这个final域的对象的引用</p>
-        <p>编译器会在final域的读之前，插入一个LoadLoad屏障</p>
-       </blockquote>
-
+      </div>
+      <div class="imgDiv" style="left:500px;top:16px;">
+       <img src="images/mtt_p_010.png"/>
       </div>
      </div>
+     <blockquote class="layui-elem-quote">
+      <p>顺序一致性内存模型类似于一个单摆,通过左右摆动的开关可以连接到任意一个线程。同时，每一个线程必须按程序的顺序来执行内存读写操作</p>
+      <p>在顺序一致性模型中，所有操作完全按程序的顺序串行执行。而在JMM中，临界区内的代码可以重排序(JMM不允许临界区内的代码逸出到临界区之外)</p>
+      <p>虽然线程A在临界区内做了重排序，由于监视器的互斥执行的特性，这里的线程B根本无法观察到线程A在临界区内的重排序。这种重排序既提高了执行效率，又没有改变程序的执行结果</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>final域的重排序规则是怎么样的？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>写final域的重排序规则禁止把final域的写重排序到构造函数之外</p>
+      <p>编译器会在final域的写之后，构造函数return之前，插入一个StoreStore屏障</p>
+      <p>在读一个对象的final域之前，一定会先读包含这个final域的对象的引用</p>
+      <p>编译器会在final域的读之前，插入一个LoadLoad屏障</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/highlight.js" type="text/javascript" charset="utf-8"></script>
 <script>
 layui.use("layer", function() {
