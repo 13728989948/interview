@@ -1,82 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title>Java常见的锁</title>
 <meta name="robots" content="all" />
 <meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta http-equiv="pragma" content="no-cache" />
 <meta http-equiv="expires" content="expires" />
-<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta http-equiv="imagetoolbar" content="false" />
-<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 <link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../css/highlight.css" type="text/css" rel="stylesheet" media="all" />
 <link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
 </head>
 
 <body>
- <div class="layui-layout layui-layout-admin">
-  <div class="layui-header header header-demo">
-   <div class="layui-main">
-    <a class="logo" href="/"></a>
-    <ul class="layui-nav">
-     <li class="layui-nav-item layui-this"><a id="goToInterview" href="javascript:goToInterview();">参加面试去</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-side layui-bg-black">
-   <div class="layui-side-scroll">
-    <ul class="layui-nav layui-nav-tree site-demo-nav">
-     <li class="layui-nav-item layui-nav-title"><a>Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础.html">Java基础</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-线程.html">Java基础-线程</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-HashMap.html">Java基础-HashMap</a></li>
-     <li class="layui-nav-item"><a href="../Java基础/Java基础-ArrayList.html">Java基础-ArrayList</a></li>
 
-     <li class="layui-nav-item layui-nav-title"><a>Java多线程</a></li>
-     <li class="layui-nav-item"><a href="../Java多线程/Java内存模型.html">Java内存模型</a></li>
-     <li class="layui-nav-item layui-this"><a href="../Java多线程/Java常见的锁.html">Java常见的锁</a></li>
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
 
-     <li class="layui-nav-item layui-nav-title"><a>Dubbo</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo基础.html">Dubbo基础</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo工作原理.html">Dubbo工作原理</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo配置参数.html">Dubbo配置参数</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo集群容错.html">Dubbo集群容错</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo负载均衡.html">Dubbo负载均衡</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo线程模型.html">Dubbo线程模型</a></li>
-     <li class="layui-nav-item"><a href="../Dubbo/Dubbo异步调用.html">Dubbo异步调用</a></li>
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
 
-     <li class="layui-nav-item layui-nav-title"><a>MySql</a></li>
-     <li class="layui-nav-item"><a href="../MySql/MySql存储引擎.html">MySql存储引擎</a></li>
-
-     <li class="layui-nav-item layui-nav-title"><a>Linux</a></li>
-     <li class="layui-nav-item"><a href="../Linux/Linux-Cpu.html">Linux-Cpu</a></li>
-    </ul>
-   </div>
-  </div>
-  <div class="layui-tab layui-tab-brief" lay-filter="demoTitle">
-   <div class="layui-body layui-tab-content site-demo site-demo-body">
-    <div class="layui-tab-item layui-show">
-     <div class="layui-main">
-      <div id="LAY_preview">
-      
 <!-- Java自旋锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java自旋锁是什么?</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>自旋锁:当前线程不停地的在循环体内执行，当循环的条件被其他线程改变时，其他线程才能进入临界区</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java自旋锁是什么?</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>自旋锁:当前线程不停地的在循环体内执行，当循环的条件被其他线程改变时，其他线程才能进入临界区</p>
+     </blockquote>
 
-       <div class="sinCodeDiv"><pre><code class="java">public class MySpinLock {
+     <div class="sinCodeDiv"><pre><code class="java">public class MySpinLock {
 
 	private AtomicReference<Thread> sign = new AtomicReference<>();
 
@@ -95,18 +63,19 @@
 		sign.compareAndSet(current, null);
 	}
 }</code></pre>
-        </div>
-        
-       <blockquote class="layui-elem-quote">
-        <p>当有第二个线程调用lock操作时由于owner值不为空，导致循环一直被执行，直至第一个线程调用unlock函数将owner设置为null，第二个线程才能进入临界区。</p>
-        <p>什么时候<em id="lkWhyUseZss" class="lkTip">使用自旋锁</em>:自旋锁只是将当前线程不停地执行循环体，不进行线程状态的改变，所以响应速度更快。但当线程数不停增加时，性能下降明显，因为每个线程都需要执行，占用CPU时间。如果线程竞争不激烈，并且保持锁的时间段</p>
-       </blockquote>
-       
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java自旋锁-Ticket锁是什么?</legend>
-       </fieldset>
+      </div>
+      
+     <blockquote class="layui-elem-quote">
+      <p>当有第二个线程调用lock操作时由于owner值不为空，导致循环一直被执行，直至第一个线程调用unlock函数将owner设置为null，第二个线程才能进入临界区。</p>
+      <p>什么时候<em id="lkWhyUseZss" class="lkTip">使用自旋锁</em>:自旋锁只是将当前线程不停地执行循环体，不进行线程状态的改变，所以响应速度更快。但当线程数不停增加时，性能下降明显，因为每个线程都需要执行，占用CPU时间。如果线程竞争不激烈，并且保持锁的时间段</p>
+     </blockquote>
 
-       <div class="sinCodeDiv"><pre><code class="java">public class MyTicketLock {
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java自旋锁-Ticket锁是什么?</legend>
+     </fieldset>
+
+     <div class="sinCodeDiv"><pre><code class="java">public class MyTicketLock {
  private AtomicInteger ticketNum = new AtomicInteger();
  private AtomicInteger serviceNum = new AtomicInteger();
  private static final ThreadLocal&lt;Integer&gt; threadLocal = new ThreadLocal&lt;Integer&gt;();
@@ -125,20 +94,20 @@
   serviceNum.compareAndSet(num, num + 1);
  }
 }</code></pre>
-        </div>
-        
-       <blockquote class="layui-elem-quote">
-        <p>Ticket锁主要解决的是访问顺序的问题，主要的问题是在多核cpu上</p>
-        <p>TicketLock每次都要查询一个serviceNum服务号，影响性能(必须要到主内存读取，并阻止其他cpu修改)</p>
-       </blockquote>
-       
-<!-- Java自旋锁-CLH队列锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java自旋锁-CLH队列锁是什么?</legend>
-       </fieldset>
+      </div>
+      
+     <blockquote class="layui-elem-quote">
+      <p>Ticket锁主要解决的是访问顺序的问题，主要的问题是在多核cpu上</p>
+      <p>TicketLock每次都要查询一个serviceNum服务号，影响性能(必须要到主内存读取，并阻止其他cpu修改)</p>
+     </blockquote>
 
-       <div id="con_lkTwdmClh" class="hhDiv noMargin" style="display:none;">
-        <div class="codeDiv"><pre><code class="java">public class MyClhLock {
+<!-- Java自旋锁-CLH队列锁 -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java自旋锁-CLH队列锁是什么?</legend>
+     </fieldset>
+
+     <div id="con_lkTwdmClh" class="hhDiv noMargin" style="display:none;">
+      <div class="codeDiv"><pre><code class="java">public class MyClhLock {
 	public static class MyClhNode {
 		private volatile boolean isLocked = true;
 	}
@@ -167,34 +136,34 @@
 		node = null;
 	}
 }</code></pre></div>
-        <div class="imgDiv" style="left:620px;top:210px;">
-         <img src="images/mtt_p_011.png"/>
-        </div>
-        <div class="textDiv" style="left:620px;top:500px;">
-         <p>当一个线程需要获取锁时，会创建一个新的Node，并将locked设置为true(表示需要获取锁)</p>
-         <p>然后线程对tail域调用getAndSet方法，使自己成为队列的尾部，并获取一个指向其前趋的引用myPred</p>
-         <p>然后该线程就在前趋结点的locked字段上旋转，直到前趋结点释放锁</p>
-         <p>当一个线程需要释放锁时，将当前结点的locked域设置为false，同时回收前趋结点</p>
-         <p>如：线程A需要获取锁，其myNode域为true，这时tail指向线程A的结点</p>
-         <p>然后线程B也加入到线程A后面，tail指向线程B的结点，然后线程A和B都在它的myPred域上旋转</p>
-         <p>一但它的myPred结点的locked字段变为false，它就可以获取锁并执行，这里线程A的myPred locked域为false，此时线程A获取到了锁</p>
-        </div>
-       </div>
+      <div class="imgDiv" style="left:620px;top:210px;">
+       <img src="images/mtt_p_011.png"/>
+      </div>
+      <div class="textDiv" style="left:620px;top:500px;">
+       <p>当一个线程需要获取锁时，会创建一个新的Node，并将locked设置为true(表示需要获取锁)</p>
+       <p>然后线程对tail域调用getAndSet方法，使自己成为队列的尾部，并获取一个指向其前趋的引用myPred</p>
+       <p>然后该线程就在前趋结点的locked字段上旋转，直到前趋结点释放锁</p>
+       <p>当一个线程需要释放锁时，将当前结点的locked域设置为false，同时回收前趋结点</p>
+       <p>如：线程A需要获取锁，其myNode域为true，这时tail指向线程A的结点</p>
+       <p>然后线程B也加入到线程A后面，tail指向线程B的结点，然后线程A和B都在它的myPred域上旋转</p>
+       <p>一但它的myPred结点的locked字段变为false，它就可以获取锁并执行，这里线程A的myPred locked域为false，此时线程A获取到了锁</p>
+      </div>
+     </div>
 
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkTwdmClh" class="lkPop">点击查看图文代码</em></p>
-        <p>CLH在前趋结点的locked域上自旋等待</p>
-        <p>CLH队列锁的优点是空间复杂度低(如果有n个线程，l个锁，每个线程每次只获取一个锁，那么需要的存储空间是o=(l+n)，n个线程有n个myNode，l个锁有l个tail)</p>
-        <p>CLHlock是不停的查询前驱变量， 导致不适合在<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">NUMA</a>架构下使用，更适合在<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">SMP</a>或<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">MPP</a>架构下使用</p>
-       </blockquote>
-       
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkTwdmClh" class="lkPop">点击查看图文代码</em></p>
+      <p>CLH在前趋结点的locked域上自旋等待</p>
+      <p>CLH队列锁的优点是空间复杂度低(如果有n个线程，l个锁，每个线程每次只获取一个锁，那么需要的存储空间是o=(l+n)，n个线程有n个myNode，l个锁有l个tail)</p>
+      <p>CLHlock是不停的查询前驱变量， 导致不适合在<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">NUMA</a>架构下使用，更适合在<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">SMP</a>或<a target="_blank" href="../../ex/smpNumaMpp/smpNumaMpp.html" class="lkBlank">MPP</a>架构下使用</p>
+     </blockquote>
+
 <!-- Java自旋锁-MCS队列锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java自旋锁-MCS队列锁是什么?</legend>
-       </fieldset>
-       
-       <div id="con_lkTwdmMcs" class="hhDiv noMargin" style="display:none;">
-        <div class="codeDiv"><pre><code class="java">public class MyMcsLock {
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java自旋锁-MCS队列锁是什么?</legend>
+     </fieldset>
+     
+     <div id="con_lkTwdmMcs" class="hhDiv noMargin" style="display:none;">
+      <div class="codeDiv"><pre><code class="java">public class MyMcsLock {
  public static class MyMcsNode {
   volatile MyMcsNode next;
   volatile boolean isLocked = true;
@@ -229,30 +198,30 @@
   }
  }
 }</code></pre></div>
-        <div class="imgDiv" style="left:560px;top:240px;">
-         <img src="images/mtt_p_012.png" style="width:600px;height:350px;"/>
-        </div>
-        <div class="textDiv" style="left:560px;top:610px;">
-         <p>如a所示，队列初始化时没有结点，tail=null</p>
-         <p>如b所示，线程A想要获取锁，于是将自己置于队尾，由于它是第一个结点，它的locked域为false</p>
-         <p>如c所示，线程B和C相继加入队列，形成链表：a->next=b, b->next=c，B和C现在没有获取锁，处于等待状态，所以它们的locked域为true，尾指针指向线程C对应的结点</p>
-         <p>如d所示，线程A释放锁后，顺着它的next指针找到了线程B，并把B的locked域设置为false。这时触发线程B获取锁</p>
-        </div>
-       </div>
-       
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkTwdmMcs" class="lkPop">点击查看图文代码</em></p>
-        <p>MSC在自己的结点的locked域上自旋等待</p>
-        <p>MSC解决了CLH在NUMA系统架构中获取locked域状态内存过远的问题</p>
-       </blockquote>
-       
+      <div class="imgDiv" style="left:560px;top:240px;">
+       <img src="images/mtt_p_012.png" style="width:600px;height:350px;"/>
+      </div>
+      <div class="textDiv" style="left:560px;top:610px;">
+       <p>如a所示，队列初始化时没有结点，tail=null</p>
+       <p>如b所示，线程A想要获取锁，于是将自己置于队尾，由于它是第一个结点，它的locked域为false</p>
+       <p>如c所示，线程B和C相继加入队列，形成链表：a->next=b, b->next=c，B和C现在没有获取锁，处于等待状态，所以它们的locked域为true，尾指针指向线程C对应的结点</p>
+       <p>如d所示，线程A释放锁后，顺着它的next指针找到了线程B，并把B的locked域设置为false。这时触发线程B获取锁</p>
+      </div>
+     </div>
+     
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkTwdmMcs" class="lkPop">点击查看图文代码</em></p>
+      <p>MSC在自己的结点的locked域上自旋等待</p>
+      <p>MSC解决了CLH在NUMA系统架构中获取locked域状态内存过远的问题</p>
+     </blockquote>
+
 <!-- 阻塞锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java阻塞锁是什么?什么时候用阻塞锁，什么时候用自旋锁</legend>
-       </fieldset>
-       
-       <div id="con_lkTwdmZuss" class="hhDiv noMargin" style="display:none;">
-        <div class="codeDiv"><pre><code class="java">public class MyZusLock {
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java阻塞锁是什么?什么时候用阻塞锁，什么时候用自旋锁</legend>
+     </fieldset>
+     
+     <div id="con_lkTwdmZuss" class="hhDiv noMargin" style="display:none;">
+      <div class="codeDiv"><pre><code class="java">public class MyZusLock {
 
 	public static class MyZusNode {
 		private volatile Thread cuTread;
@@ -285,111 +254,108 @@
 		node = null;
 	}
 }</code></pre></div>
-       </div>
+     </div>
 
-       <blockquote class="layui-elem-quote">
-        <p><em id="lkTwdmZuss" class="lkPop">点击查看图文代码</em></p>
-        <p>阻塞锁，可以说是让线程进入阻塞状态进行等待，当被唤醒 时，可进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争进入运行状态</p>
-        <p>常见的阻塞锁：synchronized，ReentrantLock，wait()，notify()，LockSupport.park()/unpart()</p>
-        <p>线程竞争不激烈的情况下使用自旋锁，竞争激烈的情况下使用阻塞锁</p>
-        <p><em id="lkWhyUseZuss" class="lkTip">阻塞锁的优势</em>在于，阻塞的线程不会占用cpu时间， 不会导致 Cpu占用率过高，但进入时间以及恢复时间都要比自旋锁略慢</p>
-       </blockquote>
+     <blockquote class="layui-elem-quote">
+      <p><em id="lkTwdmZuss" class="lkPop">点击查看图文代码</em></p>
+      <p>阻塞锁，可以说是让线程进入阻塞状态进行等待，当被唤醒 时，可进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争进入运行状态</p>
+      <p>常见的阻塞锁：synchronized，ReentrantLock，wait()，notify()，LockSupport.park()/unpart()</p>
+      <p>线程竞争不激烈的情况下使用自旋锁，竞争激烈的情况下使用阻塞锁</p>
+      <p><em id="lkWhyUseZuss" class="lkTip">阻塞锁的优势</em>在于，阻塞的线程不会占用cpu时间， 不会导致 Cpu占用率过高，但进入时间以及恢复时间都要比自旋锁略慢</p>
+     </blockquote>
 
 <!-- 可重入锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java可重入锁是什么?</legend>
-       </fieldset>
-       
-       <blockquote class="layui-elem-quote">
-        <p>可重入锁，也叫做递归锁，指的是同一线程外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，即允许一个线程多次获取同一个锁(如:ReentrantLock和synchronized都是可重入锁)</p>
-        <p>可重入锁最大的作用是避免死锁，在释放可重入锁时一个线程获取多少次锁，就必须释放多少次锁否则也会出现死锁</p>
-        <p>每一次进入和离开synchornized方法或代码块，就是一次完整的锁获取和释放</p>
-        <div class="indent-area">
-         <p class="notIndent">为什么自旋锁不是可重入的？自旋锁怎样修改为可重入锁？</p>
-         <p>对于自旋锁来说，若有同一线程两调用lock()，会导致第二次调用lock位置进行自旋，产生了死锁，当unlock的第一次调用时，就已经将锁释放了不可重入</p>
-         <p>可以采用计数次的方式修改为重入锁</p>
-        </div>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java可重入锁是什么?</legend>
+     </fieldset>
+     
+     <blockquote class="layui-elem-quote">
+      <p>可重入锁，也叫做递归锁，指的是同一线程外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，即允许一个线程多次获取同一个锁(如:ReentrantLock和synchronized都是可重入锁)</p>
+      <p>可重入锁最大的作用是避免死锁，在释放可重入锁时一个线程获取多少次锁，就必须释放多少次锁否则也会出现死锁</p>
+      <p>每一次进入和离开synchornized方法或代码块，就是一次完整的锁获取和释放</p>
+      <div class="indent-area">
+       <p class="notIndent">为什么自旋锁不是可重入的？自旋锁怎样修改为可重入锁？</p>
+       <p>对于自旋锁来说，若有同一线程两调用lock()，会导致第二次调用lock位置进行自旋，产生了死锁，当unlock的第一次调用时，就已经将锁释放了不可重入</p>
+       <p>可以采用计数次的方式修改为重入锁</p>
+      </div>
+     </blockquote>
 
 <!-- 读写锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java读写锁是什么?</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>分为读锁和写锁</p>
-        <p>读锁,多个线程可以获取读锁,但必须保证没有一个写线程和请求的写线程</p>
-        <p>若有一个写线程或请求的写线程就会与读锁互斥因为写锁是一把互斥锁</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java读写锁是什么?</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>分为读锁和写锁</p>
+      <p>读锁,多个线程可以获取读锁,但必须保证没有一个写线程和请求的写线程</p>
+      <p>若有一个写线程或请求的写线程就会与读锁互斥因为写锁是一把互斥锁</p>
+     </blockquote>
 
 <!-- 互斥锁 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>Java互斥锁是什么?同步和互斥有什么区别？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>互斥锁的特点是一次只能一个线程拥有互斥锁，其他线程只有等待</p>
-        <p>同步是指在互斥的基础上，实现访问者对资源的有序访问</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>Java互斥锁是什么?同步和互斥有什么区别？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>互斥锁的特点是一次只能一个线程拥有互斥锁，其他线程只有等待</p>
+      <p>同步是指在互斥的基础上，实现访问者对资源的有序访问</p>
+     </blockquote>
 
 <!-- 乐观锁和悲观锁的区别 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>乐观锁和悲观锁的区别是什么？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>悲观锁：不同线程同时执行时,只能有一个线程执行,其他的线程在入口处等待,直到锁被释放</p>
-        <p>乐观锁：不同线程同时执行时,可以同时进入执行,在最后更新数据的时候要检查这些数据是否被其他线程修改了(如:判断版本和未执行时是否相同),没有修改则进行更新,否则放弃本次操作,用于读多的情况</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>乐观锁和悲观锁的区别是什么？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>悲观锁：不同线程同时执行时,只能有一个线程执行,其他的线程在入口处等待,直到锁被释放</p>
+      <p>乐观锁：不同线程同时执行时,可以同时进入执行,在最后更新数据的时候要检查这些数据是否被其他线程修改了(如:判断版本和未执行时是否相同),没有修改则进行更新,否则放弃本次操作,用于读多的情况</p>
+     </blockquote>
 
 <!-- 公平锁和非公平锁的区别 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>公平锁和非公平锁的区别是什么？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>公平锁：公平锁指的是哪个线程先运行，就可以先得到锁</p>
-        <p>公平锁能够减少"饥饿"发生的概率,吞吐量没有非公平锁好,因为进出都要按照sync队列中有顺序的进行</p>
-        <p>非公平锁：后续获取锁的线程不顾及sync队列中等待的线程，而是能获取就获取</p>
-        <p>非公平锁可以保证进入和退出锁的吞吐量</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>公平锁和非公平锁的区别是什么？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>公平锁：公平锁指的是哪个线程先运行，就可以先得到锁</p>
+      <p>公平锁能够减少"饥饿"发生的概率,吞吐量没有非公平锁好,因为进出都要按照sync队列中有顺序的进行</p>
+      <p>非公平锁：后续获取锁的线程不顾及sync队列中等待的线程，而是能获取就获取</p>
+      <p>非公平锁可以保证进入和退出锁的吞吐量</p>
+     </blockquote>
 
 <!-- 偏向锁,轻量级锁,重量级锁的区别 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>偏向锁,轻量级锁,重量级锁的区别是什么？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>偏向锁：在无竞争的情况下把整个同步都消除掉，不进行CAS操作，所以偏向锁可以提高带有同步但无竞争的程序性能</p>
-        <p>偏向锁适用于只有一个线程访问同步块场景，如果程序中大多数的锁总是被多个不同的线程访问，那么就应该关闭偏向锁来提高程序性能(-XX:-UseBiasedLocking=false关闭偏向锁)</p>
-        <p>轻量级锁：在无竞争的情况下使用CAS操作去消除同步使用的互斥量,所以竞争的线程不会阻塞,锁占用时间很短(追求响应时间)</p>
-        <p>重量级锁：所有线程都需要竞争获取锁，同一线程可以重入锁，但锁占用时间较长</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>偏向锁,轻量级锁,重量级锁的区别是什么？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>偏向锁：在无竞争的情况下把整个同步都消除掉，不进行CAS操作，所以偏向锁可以提高带有同步但无竞争的程序性能</p>
+      <p>偏向锁适用于只有一个线程访问同步块场景，如果程序中大多数的锁总是被多个不同的线程访问，那么就应该关闭偏向锁来提高程序性能(-XX:-UseBiasedLocking=false关闭偏向锁)</p>
+      <p>轻量级锁：在无竞争的情况下使用CAS操作去消除同步使用的互斥量,所以竞争的线程不会阻塞,锁占用时间很短(追求响应时间)</p>
+      <p>重量级锁：所有线程都需要竞争获取锁，同一线程可以重入锁，但锁占用时间较长</p>
+     </blockquote>
 
 <!-- 怎么理解锁消除,锁粗化,锁膨胀 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>怎么理解锁消除,锁粗化,锁膨胀？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>锁消除：没有别的线程产生竞争的可能(别的线程没有临界量的引用)，JVM优化时会自动取消这个锁</p>
-        <p>锁粗化：如:在循环内写了一个synchronized锁(这个其实可以写在循环外)，JVM优化时会自动将锁同步块扩大来减少频繁的加锁和释放锁的操作</p>
-        <p>锁膨胀：如:没有发生竞争使用时使用的偏向锁，当发生竞争后，锁会膨胀为轻量级锁，当两条或两条以上的线程竞争同一个把锁时，轻量级锁会膨胀成重量级锁</p>
-       </blockquote>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>怎么理解锁消除,锁粗化,锁膨胀？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>锁消除：没有别的线程产生竞争的可能(别的线程没有临界量的引用)，JVM优化时会自动取消这个锁</p>
+      <p>锁粗化：如:在循环内写了一个synchronized锁(这个其实可以写在循环外)，JVM优化时会自动将锁同步块扩大来减少频繁的加锁和释放锁的操作</p>
+      <p>锁膨胀：如:没有发生竞争使用时使用的偏向锁，当发生竞争后，锁会膨胀为轻量级锁，当两条或两条以上的线程竞争同一个把锁时，轻量级锁会膨胀成重量级锁</p>
+     </blockquote>
 
 <!-- 互斥锁和信号量的区别 -->
-       <fieldset class="layui-elem-field layui-field-title">
-        <legend>互斥锁和信号量的区别是什么？</legend>
-       </fieldset>
-       <blockquote class="layui-elem-quote">
-        <p>互斥锁：互斥锁的特点是一次只能一个线程拥有互斥锁，其他线程只有等待</p>
-        <p>信号量：容许多个线程同时进入，但有个上限，若一个线程执行完了，其他等待的线程通过竞争进入，但同时进入的线程始终不能超过这个上限值</p>
-       </blockquote>
-       
-      </div>
-     </div>
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>互斥锁和信号量的区别是什么？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>互斥锁：互斥锁的特点是一次只能一个线程拥有互斥锁，其他线程只有等待</p>
+      <p>信号量：容许多个线程同时进入，但有个上限，若一个线程执行完了，其他等待的线程通过竞争进入，但同时进入的线程始终不能超过这个上限值</p>
+     </blockquote>
     </div>
    </div>
   </div>
  </div>
 
+<!-- Js导入之底部 -->
 <script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
-<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="../../js/highlight.js" type="text/javascript" charset="utf-8"></script>
 <script>
 layui.use("layer", function() {
