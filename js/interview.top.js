@@ -1,4 +1,3 @@
-var is
 // 创建头部
 function createHeader() {
 	var html = "";
