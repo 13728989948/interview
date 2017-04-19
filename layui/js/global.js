@@ -1,10 +1,12 @@
 layui.define([ "layer", "code", "form", "element", "util" ], function(exports) {
 	var layer = layui.layer, form = layui.form(), util = layui.util, device = layui.device();
 
+	debugger;
+	
 	// 手机设备的简单适配
-	var treeMobile = $(".site-tree-mobile"), shadeMobile = $(".site-mobile-shade");
+	var shadeMobile = $(".site-mobile-shade");
 
-	treeMobile.on("click", function() {
+	$("#mbx_image").on("click", function() {
 		$("body").addClass("site-mobile");
 	});
 

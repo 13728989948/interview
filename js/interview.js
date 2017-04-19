@@ -74,26 +74,3 @@ function bindClickDocClosePop(elId) {
 		}
 	});
 }
-
-// 参加面试去
-function goToInterview() {
-	layui.use("layer", function() {
-		var elId = $(this).attr("id");
-		var html = "耶！参加面试了哦~~~";
-		var content = "<div id=\"" + elId + "PopCon\" class=\"lkPopCon goToInterview\">" + html + "</div>";
-
-		layer.open({
-			type : 1,
-			title : "参加面试去",
-			shade : false,// 该值为false可以重复打很多个弹出框,也没有遮罩
-			content : content,
-			success : function(layero, index) {
-
-				// 绑定点击Doc关闭弹出框
-				bindClickDocClosePop(elId);
-			},
-			end : function() {
-			}
-		});
-	});
-}
