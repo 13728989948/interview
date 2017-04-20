@@ -7,7 +7,7 @@
 .lkPopCon{font-size:14px;padding:0;}
 .lkPopCon .lkPopDiv{width:50vw;max-width:100vw;height:70vh;}
 .lkPopCon img{max-width:100vw;}
-.lkTipCon{max-width:60vw;font-size:14px;padding:4px;line-height:24px;}
+.lkTipCon{max-width:40vw;font-size:14px;padding:4px;line-height:24px;}
 
 /**链接文字**********************************************/
 .lkPop{color:#0990AD;cursor:pointer;}
