@@ -10,6 +10,7 @@ function createHeader() {
 	html += "   <div class=\"logo-div\"></div>" + "\n";
 	html += "  </div>" + "\n";
 	html += " </a>" + "\n";
+	html += " <div class=\"searchImg\"></div>" + "\n";
 	html += "</div>" + "\n";
 
 	document.write(html);
