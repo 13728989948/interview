@@ -45,6 +45,8 @@ pre{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-s
 .layui-main .layui-elem-quote:last-child{margin-bottom:0 !important;}
 .layui-side .layui-side-scroll::-webkit-scrollbar{width:4px;}
 
+.layui-table>thead>tr>th{min-width:60px;}
+
 @media screen and (max-width:750px) {
 	.header .logo-div{height:34%;top:33%;}
 	.header .logo-wrap{margin:0 auto;}
@@ -65,4 +67,8 @@ pre{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-s
 	.site-mobile .layui-side{left:0;}
 	.site-mobile .layui-side .layui-side-scroll{z-index:1000;-webkit-overflow-scrolling:touch;}
 	.site-mobile .site-mobile-shade{top:0;bottom:0;left:0;right:0;position:fixed;content:"";z-index:999;}
+	
+	.layui-table{table-layout:fixed !important;}
+	.layui-table th
+	  ,.layui-table td{padding:0 10px !important;word-wrap:break-word;}
 }
