@@ -10,7 +10,7 @@ function createHeader() {
 	html += "   <div class=\"logo-div\"></div>" + "\n";
 	html += "  </div>" + "\n";
 	html += " </a>" + "\n";
-	html += " <div class=\"searchImg\"></div>" + "\n";
+	html += " <div id=\"glSeBtn\" class=\"searchImg\"></div>" + "\n";
 	html += "</div>" + "\n";
 
 	document.write(html);
@@ -35,5 +35,9 @@ function createHeader() {
 		mobileShade.on("click", function() {
 			$("body").removeClass("site-mobile");
 		});
+	});
+	
+	// 绑定点击全局搜索按钮
+	$("#glSeBtn").on("click", function() {
 	});
 }
