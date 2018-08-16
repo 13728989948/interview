@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MySql隔离级别</title>
+<meta name="robots" content="all" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="expires" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
+
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>READ COMMITTED</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>一个事务正在执行读时,是无法被其他事务看到(会引起脏读,幻读)</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>REPEATABLE READ(默认default)</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>解决了脏读的问题</p>
+      <p>一个事务正在读,另外一个事务正在插入,多次读取后(会引起幻读)</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>READ UNCIMMITTED</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>事务中的修改,即使没有提交,其他事务也可以看得到(会引起脏读,幻读)</p>
+     </blockquote>
+     
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>SERIALIZABLE</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>SERIALIZABLE是最高的隔离级别,他大量加上锁,导致大量的请求超时,因此性能不好(不会引起脏读,幻读)</p>
+     </blockquote>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<!-- Js导入之底部 -->
+<script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
+<script>
+layui.use("layer", function() {
+});
+</script>
+</body>
+</html>

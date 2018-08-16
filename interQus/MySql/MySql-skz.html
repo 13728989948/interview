@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MySql锁控制</title>
+<meta name="robots" content="all" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="expires" />
+<meta http-equiv="imagetoolbar" content="false" />
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="cache-control" content="no-store, must-revalidate, no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<link href="../../css/global.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../css/interview.css" type="text/css" rel="stylesheet" media="all" />
+<link href="../../layui/src/css/layui.css" type="text/css" rel="stylesheet" media="all" />
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.top.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.side.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+
+<!-- 外层Div -->
+ <div class="layui-layout-admin">
+  <script>createHeader();</script>
+  <script>createSideBar();</script>
+
+<!-- 主内容区 -->
+  <div id="mainCon" class="mainCon">
+   <div class="layui-body">
+    <div class="layui-main">
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>MySql悲观锁</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>select ...表1 for update</p>
+      <p>select ...表2 for update</p>
+      <p>意思是:第一次接触for update后没有执行完事务时其他的连接是不能update这些表的</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>MySql乐观锁</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>若悲观锁在长事务中一直是处于加锁状态的,这样效率很低,而乐观锁在update时进行判断是否可以更新,不需要先加锁</p>
+      <p>一般情况下用version作为表的字段,更新时比较version的版本号和第一次查询出来的值是否相同,相同则更新</p>
+     </blockquote>
+
+<!--  -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>MySql共享锁</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>共享锁指不同事务对同一资源调用引起并发问题时对资源加锁(lock in share mode)</p>
+     </blockquote>
+    </div>
+   </div>
+  </div>
+ </div>
+
+<!-- Js导入之底部 -->
+<script src="../../layui/src/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/interview.js" type="text/javascript" charset="utf-8"></script>
+<script>
+layui.use("layer", function() {
+});
+</script>
+</body>
+</html>

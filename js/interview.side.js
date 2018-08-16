@@ -24,7 +24,9 @@ function createSideBar() {
 	html += "     <li class=\"layui-nav-item\"><a href=\"" + pathQz + "/interQus/Dubbo/Dubbo-ybdy.html\">Dubbo异步调用</a></li>" + "\n";
 	html += "     " + "\n";
 	html += "     <li class=\"layui-nav-item layui-nav-title\"><a>MySql</a></li>" + "\n";
+	html += "     <li class=\"layui-nav-item\"><a href=\"" + pathQz + "/interQus/MySql/MySql-skz.html\">MySql锁控制</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"" + pathQz + "/interQus/MySql/MySql-ccyq.html\">MySql存储引擎</a></li>" + "\n";
+	html += "     <li class=\"layui-nav-item\"><a href=\"" + pathQz + "/interQus/MySql/MySql-gljb.html\">MySql隔离级别</a></li>" + "\n";
 	html += "     " + "\n";
 	html += "     <li class=\"layui-nav-item layui-nav-title\"><a>Linux</a></li>" + "\n";
 	html += "     <li class=\"layui-nav-item\"><a href=\"" + pathQz + "/interQus/Linux/Linux-Cpu.html\">Linux-Cpu</a></li>" + "\n";
