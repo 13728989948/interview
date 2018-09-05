@@ -348,6 +348,15 @@
       <p>互斥锁：互斥锁的特点是一次只能一个线程拥有互斥锁，其他线程只有等待</p>
       <p>信号量：容许多个线程同时进入，但有个上限，若一个线程执行完了，其他等待的线程通过竞争进入，但同时进入的线程始终不能超过这个上限值</p>
      </blockquote>
+
+<!-- 如何避免死锁 -->
+     <fieldset class="layui-elem-field layui-field-title">
+      <legend>如何避免死锁？</legend>
+     </fieldset>
+     <blockquote class="layui-elem-quote">
+      <p>锁顺序：考虑清楚锁顺序,尽量减少嵌套的加锁交互</p>
+      <p>每个线程获取锁时拥有一个超时时间：Lock类中的tryLock加一个超时时间</p>
+     </blockquote>
     </div>
    </div>
   </div>
